@@ -445,3 +445,38 @@ code{color:#fff}
     font-size:14px;
   }
 }
+.horn-pill button{
+  transition:.25s ease;
+  animation:hornGlow 2.8s ease-in-out infinite;
+}
+
+.horn-pill button:hover{
+  transform:translateY(-2px) scale(1.04);
+  background:rgba(255,255,255,.16);
+}
+
+.horn-pill button:active{
+  transform:scale(.96);
+}
+
+.horn-icon{
+  display:inline-block;
+  animation:hornShake 2.2s ease-in-out infinite;
+}
+
+@keyframes hornGlow{
+  0%,100%{
+    box-shadow:0 10px 28px rgba(0,0,0,.17);
+  }
+  50%{
+    box-shadow:
+      0 12px 32px rgba(0,0,0,.22),
+      0 0 0 5px rgba(255,255,255,.05);
+  }
+}
+
+@keyframes hornShake{
+  0%,85%,100%{transform:rotate(0)}
+  90%{transform:rotate(-10deg)}
+  95%{transform:rotate(10deg)}
+}
