@@ -838,3 +838,180 @@ code{color:#fff}
 .top-media-pill #soundIcon{
   font-size:13px !important;
 }
+/* ===== FINAL PREMIUM TOP MEDIA PILL ===== */
+
+.top-media-pill{
+  height:36px !important;
+  padding:3px 8px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  gap:0 !important;
+
+  border-radius:999px !important;
+  border:1px solid rgba(255,255,255,.26) !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.12),
+      rgba(255,255,255,.055)
+    ) !important;
+
+  backdrop-filter:blur(16px) saturate(140%) !important;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 0 0 1px rgba(255,255,255,.03) !important;
+
+  overflow:hidden !important;
+}
+
+
+/* ===== LIVE AREA ===== */
+
+.top-live-listeners{
+  height:30px !important;
+  padding:0 11px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  gap:6px !important;
+
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+
+  color:rgba(255,255,255,.92) !important;
+  font-size:9px !important;
+  font-weight:800 !important;
+  letter-spacing:.7px !important;
+}
+
+.live-user-dot{
+  width:7px !important;
+  height:7px !important;
+
+  border-radius:50% !important;
+  background:#34f47b !important;
+
+  box-shadow:
+    0 0 7px rgba(52,244,123,.95),
+    0 0 14px rgba(52,244,123,.45) !important;
+
+  animation:premiumLivePulse 1.5s ease-in-out infinite !important;
+}
+
+#liveListenerCount{
+  font-size:10px !important;
+  font-weight:900 !important;
+  color:#fff !important;
+}
+
+
+/* ===== PLAYLIST - REMOVE INNER PILL ===== */
+
+.top-media-pill .top-playlist-btn{
+  position:static !important;
+
+  height:30px !important;
+  padding:0 11px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  gap:6px !important;
+
+  border:0 !important;
+  outline:0 !important;
+  border-radius:0 !important;
+
+  background:transparent !important;
+
+  box-shadow:none !important;
+  animation:none !important;
+
+  color:#fff !important;
+  font-size:10px !important;
+  font-weight:700 !important;
+
+  cursor:pointer !important;
+}
+
+
+/* ===== SOUND - NO EXTRA CIRCLE ===== */
+
+.top-media-pill .sound-toggle{
+  position:static !important;
+
+  width:31px !important;
+  height:30px !important;
+
+  display:grid !important;
+  place-items:center !important;
+
+  border:0 !important;
+  outline:0 !important;
+  border-radius:0 !important;
+
+  background:transparent !important;
+
+  box-shadow:none !important;
+  animation:none !important;
+
+  cursor:pointer !important;
+}
+
+
+/* ===== DIVIDERS ===== */
+
+.top-pill-divider{
+  width:1px !important;
+  height:17px !important;
+
+  margin:0 1px !important;
+
+  background:linear-gradient(
+    transparent,
+    rgba(255,255,255,.32),
+    transparent
+  ) !important;
+}
+
+
+/* ===== ICONS ===== */
+
+.top-media-pill .playlist-icon{
+  font-size:12px !important;
+  opacity:.9;
+}
+
+.top-media-pill #soundIcon{
+  font-size:13px !important;
+  opacity:.95;
+}
+
+
+/* ===== HOVER ONLY - NO NEW PILL ===== */
+
+.top-media-pill .top-playlist-btn:hover,
+.top-media-pill .sound-toggle:hover{
+  background:rgba(255,255,255,.06) !important;
+  border-radius:0 !important;
+  transform:none !important;
+}
+
+
+/* ===== LIVE ANIMATION ===== */
+
+@keyframes premiumLivePulse{
+  0%,100%{
+    transform:scale(1);
+    opacity:1;
+  }
+
+  50%{
+    transform:scale(1.28);
+    opacity:.72;
+  }
+}
