@@ -67,3 +67,112 @@ if (topPlaylistBtn) {
     playlistPanel.setAttribute("aria-hidden", "false");
   });
 }
+// ===== REAL LIVE LISTENERS COUNT =====
+
+const LISTENERS_TABLE_ID = "listeners";
+const liveListenerCountEl = document.getElementById("liveListenerCount");
+
+const listenerSessionId =
+  localStorage.getItem("krishnaListenerSession") ||
+  ("listener_" + crypto.randomUUID().replaceAll("-", ""));
+
+localStorage.setItem("krishnaListenerSession", listenerSessionId);
+
+function listenersApi(rowId = "") {
+  return `${APPWRITE.endpoint}/databases/${APPWRITE.databaseId}/tables/${LISTENERS_TABLE_ID}/rows${rowId ? "/" + rowId : ""}`;
+}
+
+async function updateMyPresence() {
+  const now = new Date().toISOString();
+
+  try {
+    const check = await fetch(listenersApi(listenerSessionId), {
+      headers: {
+        "X-Appwrite-Project": APPWRITE.projectId
+      }
+    });
+
+    if (check.ok) {
+      await fetch(listenersApi(listenerSessionId), {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Appwrite-Project": APPWRITE.projectId
+        },
+        body: JSON.stringify({
+          data: {
+            sessionId: listenerSessionId,
+            lastSeen: now
+          }
+        })
+      });
+    } else {
+      await fetch(listenersApi(), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Appwrite-Project": APPWRITE.projectId
+        },
+        body: JSON.stringify({
+          rowId: listenerSessionId,
+          data: {
+            sessionId: listenerSessionId,
+            lastSeen: now
+          }
+        })
+      });
+    }
+
+  } catch (err) {
+    console.warn("Presence update error:", err);
+  }
+}
+
+async function refreshLiveListenerCount() {
+  try {
+    const res = await fetch(
+      `${listenersApi()}?queries[]=${encodeURIComponent(
+        JSON.stringify({
+          method: "limit",
+          values: [100]
+        })
+      )}`,
+      {
+        headers: {
+          "X-Appwrite-Project": APPWRITE.projectId
+        }
+      }
+    );
+
+    if (!res.ok) return;
+
+    const data = await res.json();
+
+    const cutoff = Date.now() - 45000;
+
+    const activeListeners = (data.rows || []).filter(row => {
+      return new Date(row.lastSeen).getTime() >= cutoff;
+    });
+
+    if (liveListenerCountEl) {
+      liveListenerCountEl.textContent = activeListeners.length;
+    }
+
+  } catch (err) {
+    console.warn("Live count error:", err);
+  }
+}
+
+async function runPresence() {
+  await updateMyPresence();
+  await refreshLiveListenerCount();
+}
+
+runPresence();
+
+setInterval(async () => {
+  await updateMyPresence();
+  await refreshLiveListenerCount();
+}, 15000);
+
+setInterval(refreshLiveListenerCount, 5000);
