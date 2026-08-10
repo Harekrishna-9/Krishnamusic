@@ -480,3 +480,169 @@ code{color:#fff}
   90%{transform:rotate(-10deg)}
   95%{transform:rotate(10deg)}
 }
+/* ===== Combined Playlist + Sound Pill ===== */
+
+.top-media-pill{
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:30;
+
+  display:flex;
+  align-items:center;
+  gap:2px;
+
+  height:42px;
+  padding:4px;
+
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.28);
+
+  background:rgba(255,255,255,.10);
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.20),
+    inset 0 1px rgba(255,255,255,.16);
+
+  animation:mediaPillGlow 2.8s ease-in-out infinite;
+}
+
+/* Playlist */
+.top-media-pill .top-playlist-btn{
+  position:static;
+  height:32px;
+
+  padding:0 12px;
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  border:0;
+  border-radius:999px;
+
+  background:transparent;
+  color:#fff;
+
+  font-size:11px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  box-shadow:none;
+  animation:none;
+  transition:.25s ease;
+}
+
+/* Sound */
+.top-media-pill .sound-toggle{
+  position:static;
+
+  width:32px;
+  height:32px;
+
+  display:grid;
+  place-items:center;
+
+  border:0;
+  border-radius:50%;
+
+  background:transparent;
+  color:#fff;
+
+  cursor:pointer;
+
+  box-shadow:none;
+  animation:none;
+  transition:.25s ease;
+}
+
+/* Divider */
+.top-pill-divider{
+  width:1px;
+  height:20px;
+  background:rgba(255,255,255,.24);
+}
+
+/* Hover */
+.top-media-pill button:hover{
+  background:rgba(255,255,255,.14);
+  transform:scale(1.04);
+}
+
+/* Playlist Icon */
+.top-media-pill .playlist-icon{
+  display:inline-block;
+  font-size:14px;
+  animation:playlistMiniMove 1.8s ease-in-out infinite;
+}
+
+/* Sound Icon */
+.top-media-pill #soundIcon{
+  display:inline-block;
+  font-size:15px;
+  animation:soundMiniPulse 1.7s ease-in-out infinite;
+}
+
+/* Main Pill Glow */
+@keyframes mediaPillGlow{
+  0%,100%{
+    box-shadow:
+      0 10px 28px rgba(0,0,0,.20),
+      0 0 0 0 rgba(255,255,255,.10);
+  }
+
+  50%{
+    box-shadow:
+      0 12px 32px rgba(0,0,0,.24),
+      0 0 0 5px rgba(255,255,255,.04);
+  }
+}
+
+/* Playlist animation */
+@keyframes playlistMiniMove{
+  0%,100%{
+    transform:translateX(0);
+  }
+
+  50%{
+    transform:translateX(2px);
+  }
+}
+
+/* Sound animation */
+@keyframes soundMiniPulse{
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.15);
+  }
+}
+
+/* Mobile */
+@media(max-width:760px){
+  .top-media-pill{
+    top:14px;
+    right:14px;
+    height:36px;
+    padding:3px;
+  }
+
+  .top-media-pill .top-playlist-btn{
+    height:28px;
+    padding:0 9px;
+    font-size:10px;
+  }
+
+  .top-media-pill .sound-toggle{
+    width:28px;
+    height:28px;
+  }
+
+  .top-pill-divider{
+    height:17px;
+  }
+}
