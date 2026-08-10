@@ -1015,3 +1015,14 @@ code{color:#fff}
     opacity:.72;
   }
 }
+/* ONLY REMOVE PLAYLIST INNER BACKGROUND */
+.top-media-pill .top-playlist-btn,
+.top-media-pill .top-playlist-btn:hover,
+.top-media-pill .top-playlist-btn:focus,
+.top-media-pill .top-playlist-btn:active{
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
