@@ -10,7 +10,52 @@ function togglePlay(){if(!playlist.length){alert("Playlist में कोई p
 function nextTrack(){if(!playlist.length)return;shuffle?loadTrack(Math.floor(Math.random()*playlist.length),true):loadTrack(currentIndex+1,true)}function prevTrack(){if(playlist.length)loadTrack(currentIndex-1,true)}function fmt(sec){if(!Number.isFinite(sec))return"0:00";return`${Math.floor(sec/60)}:${Math.floor(sec%60).toString().padStart(2,"0")}`}
 function renderPlaylist(){playlistList.innerHTML="";playlist.forEach((track,index)=>{const btn=document.createElement("button");btn.className="song-item"+(index===currentIndex?" active":"");btn.innerHTML=`<div><strong>${track.title}</strong><br><span>${track.artist}</span></div><span>${index===currentIndex?"●":"▶"}</span>`;btn.onclick=()=>loadTrack(index,true);playlistList.appendChild(btn)})}
 playBtn.onclick=togglePlay;nextBtn.onclick=nextTrack;prevBtn.onclick=prevTrack;shuffleBtn.onclick=()=>{shuffle=!shuffle;shuffleBtn.style.opacity=shuffle?"1":".55"};soundToggle.onclick=()=>{audio.muted=!audio.muted;soundIcon.textContent=audio.muted?"🔇":"♫"};audio.onplay=()=>playBtn.textContent="❚❚";audio.onpause=()=>playBtn.textContent="▶";audio.onended=nextTrack;audio.onloadedmetadata=()=>durationEl.textContent=fmt(audio.duration);audio.ontimeupdate=()=>{currentTimeEl.textContent=fmt(audio.currentTime);progress.value=audio.duration?(audio.currentTime/audio.duration)*100:0};progress.oninput=()=>{if(audio.duration)audio.currentTime=(progress.value/100)*audio.duration};playlistBtn.onclick=()=>{playlistPanel.classList.add("open");playlistPanel.setAttribute("aria-hidden","false")};closePlaylist.onclick=()=>{playlistPanel.classList.remove("open");playlistPanel.setAttribute("aria-hidden","true")};
-hornBtn.onclick=()=>{const ctx=new(window.AudioContext||window.webkitAudioContext)(),osc=ctx.createOscillator(),gain=ctx.createGain();osc.type="square";osc.frequency.setValueAtTime(190,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(150,ctx.currentTime+.22);gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.18,ctx.currentTime+.025);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.28);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.3)};
+hornBtn.onclick = async () => {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AudioCtx();
+
+    if (ctx.state === "suspended") {
+      await ctx.resume();
+    }
+
+    const osc1 = ctx.createOscillator();
+    const osc2 = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc1.type = "square";
+    osc2.type = "sawtooth";
+
+    osc1.frequency.setValueAtTime(180, ctx.currentTime);
+    osc2.frequency.setValueAtTime(145, ctx.currentTime);
+
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(
+      0.22,
+      ctx.currentTime + 0.03
+    );
+    gain.gain.exponentialRampToValueAtTime(
+      0.0001,
+      ctx.currentTime + 0.55
+    );
+
+    osc1.connect(gain);
+    osc2.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc1.start();
+    osc2.start();
+
+    osc1.stop(ctx.currentTime + 0.55);
+    osc2.stop(ctx.currentTime + 0.55);
+
+    setTimeout(() => ctx.close(), 700);
+
+  } catch (err) {
+    console.error("Horn error:", err);
+  }
+};
+  (),osc=ctx.createOscillator(),gain=ctx.createGain();osc.type="square";osc.frequency.setValueAtTime(190,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(150,ctx.currentTime+.22);gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.18,ctx.currentTime+.025);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.28);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.3)};
 function updateClock(){clock.textContent=new Date().toLocaleTimeString("en-IN",{hour:"numeric",minute:"2-digit"}).toLowerCase()}updateClock();setInterval(updateClock,1000);let q=0;setInterval(()=>{q=(q+1)%quotes.length;quoteEl.animate([{opacity:0,transform:"translateY(5px)"},{opacity:1,transform:"none"}],{duration:500});quoteEl.textContent=quotes[q]},6000);
 (async()=>{playlist=await getSavedPlaylist();loadTrack(0);renderPlaylist()})();
 // ===== TOP PLAYLIST BUTTON =====
