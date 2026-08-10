@@ -259,3 +259,39 @@ code{color:#fff}
   .quote-wrap{margin-bottom:8px;font-size:15px}
   .player{min-height:82px}
 }
+/* ===== Krishna Music Playlist Message Slider ===== */
+
+.playlist-note-slider {
+  width: 100%;
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.07);
+  padding: 9px 0;
+  position: relative;
+}
+
+.playlist-note-track {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  color: rgba(255,255,255,.8);
+  animation: krishnaNoteSlide 12s linear infinite;
+}
+
+@keyframes krishnaNoteSlide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.playlist-note-slider:hover .playlist-note-track {
+  animation-play-state: paused;
+}
