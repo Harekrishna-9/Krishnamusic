@@ -55,7 +55,7 @@ hornBtn.onclick = async () => {
     console.error("Horn error:", err);
   }
 };
-  (),osc=ctx.createOscillator(),gain=ctx.createGain();osc.type="square";osc.frequency.setValueAtTime(190,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(150,ctx.currentTime+.22);gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.18,ctx.currentTime+.025);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.28);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.3)};
+  
 function updateClock(){clock.textContent=new Date().toLocaleTimeString("en-IN",{hour:"numeric",minute:"2-digit"}).toLowerCase()}updateClock();setInterval(updateClock,1000);let q=0;setInterval(()=>{q=(q+1)%quotes.length;quoteEl.animate([{opacity:0,transform:"translateY(5px)"},{opacity:1,transform:"none"}],{duration:500});quoteEl.textContent=quotes[q]},6000);
 (async()=>{playlist=await getSavedPlaylist();loadTrack(0);renderPlaylist()})();
 // ===== TOP PLAYLIST BUTTON =====
