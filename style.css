@@ -295,3 +295,77 @@ code{color:#fff}
 .playlist-note-slider:hover .playlist-note-track {
   animation-play-state: paused;
 }
+/* ===== Top Right Playlist Button ===== */
+
+.top-playlist-btn{
+  position:fixed;
+  top:20px;
+  right:68px;
+  z-index:25;
+
+  height:36px;
+  padding:0 14px;
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.28);
+
+  background:rgba(255,255,255,.10);
+  backdrop-filter:blur(16px);
+
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.20),
+    inset 0 1px rgba(255,255,255,.16);
+
+  animation:playlistBtnGlow 2.5s ease-in-out infinite;
+  transition:.25s ease;
+}
+
+.top-playlist-btn:hover{
+  transform:translateY(-2px) scale(1.04);
+  background:rgba(255,255,255,.18);
+}
+
+.playlist-icon{
+  font-size:15px;
+  animation:playlistIconMove 1.8s ease-in-out infinite;
+}
+
+@keyframes playlistBtnGlow{
+  0%,100%{
+    box-shadow:
+      0 8px 25px rgba(0,0,0,.20),
+      0 0 0 0 rgba(255,255,255,.12);
+  }
+
+  50%{
+    box-shadow:
+      0 10px 30px rgba(0,0,0,.24),
+      0 0 0 5px rgba(255,255,255,.05);
+  }
+}
+
+@keyframes playlistIconMove{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(2px)}
+}
+
+@media(max-width:760px){
+  .top-playlist-btn{
+    right:58px;
+    top:16px;
+    height:32px;
+    padding:0 10px;
+    font-size:10px;
+  }
+}
