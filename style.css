@@ -1026,3 +1026,40 @@ code{color:#fff}
     border: none !important;
     outline: none !important;
 }
+/* ===== FORCE REMOVE PLAYLIST BOX ONLY ===== */
+
+.top-media-pill #topPlaylistBtn,
+.top-media-pill #topPlaylistBtn:hover,
+.top-media-pill #topPlaylistBtn:focus,
+.top-media-pill #topPlaylistBtn:active {
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+
+    border-radius: 0 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Agar box ::before / ::after se aa raha ho */
+.top-media-pill #topPlaylistBtn::before,
+.top-media-pill #topPlaylistBtn::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+/* Playlist ke andar ke elements ka background bhi remove */
+.top-media-pill #topPlaylistBtn span,
+.top-media-pill #topPlaylistBtn .playlist-icon {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
