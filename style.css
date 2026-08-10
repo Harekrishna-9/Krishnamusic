@@ -782,3 +782,59 @@ code{color:#fff}
 .top-media-pill #soundIcon{
   font-size:12px !important;
 }
+/* ===== Final Fix: Live + Playlist + Sound Pill ===== */
+
+.top-media-pill{
+  height:34px !important;
+  padding:3px 8px !important;
+
+  border-radius:999px !important;
+  border:1px solid rgba(255,255,255,.24) !important;
+
+  background:rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(12px);
+
+  gap:3px !important;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,.16),
+    inset 0 1px 0 rgba(255,255,255,.12) !important;
+}
+
+.top-live-listeners{
+  height:28px !important;
+  padding:0 9px !important;
+  font-size:9px !important;
+  gap:5px !important;
+}
+
+.top-media-pill .top-playlist-btn{
+  height:28px !important;
+  padding:0 10px !important;
+  font-size:10px !important;
+  gap:6px !important;
+}
+
+.top-media-pill .sound-toggle{
+  width:29px !important;
+  height:28px !important;
+  font-size:14px !important;
+}
+
+.top-pill-divider{
+  height:17px !important;
+  background:rgba(255,255,255,.22) !important;
+}
+
+.live-user-dot{
+  width:7px !important;
+  height:7px !important;
+}
+
+.top-media-pill .playlist-icon{
+  font-size:12px !important;
+}
+
+.top-media-pill #soundIcon{
+  font-size:13px !important;
+}
