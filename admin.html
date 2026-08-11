@@ -1,0 +1,23 @@
+<!doctype html><html lang="hi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Krishna Music Admin</title><link rel="stylesheet" href="admin.css"></head><body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<div id="login" class="login"><form id="loginForm" class="card login-card"><div class="logo">KM</div><h1>Krishna Music</h1><p>Admin Panel</p><label>Admin Email</label><input id="email" type="email" placeholder="Enter admin email" required><label>Password</label><input id="password" type="password" placeholder="Enter password" required><button>Login</button><small>Appwrite Admin Login</small></form></div>
+<div id="app" class="app hidden">
+<aside><div class="brand"><span>KM</span><div><b>Krishna Music</b><small>Admin Panel</small></div></div><nav><button class="active"><span class="nav-icon">♫</span><span>Music Center</span></button><a href="index.html" target="_blank"><span class="nav-icon">↗</span><span>View Website</span></a></nav><button id="logout" class="logout"><span class="nav-icon">⎋</span><span>Logout</span></button></aside>
+<main><header class="hero-head"><div><small>KRISHNA MUSIC</small><h1>Music Center</h1><p>Manage your highway playlist, publish songs and keep the vibe rolling.</p></div><button id="add" class="primary add-btn"><span class="plus">＋</span><span>Add Music</span></button></header>
+<div class="stats"><div class="stat-card"><span>Total Songs</span><b id="total">0</b><i>♫</i></div><div class="stat-card"><span>Published</span><b id="published">0</b><i>●</i></div><div class="stat-card"><span>Hidden</span><b id="hiddenCount">0</b><i>◌</i></div></div>
+<div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="search" placeholder="Search song or artist..."></div><div class="tool-actions"><button id="export">⇩ Export</button><label>⇧ Import<input id="import" type="file" accept=".json"></label></div></div>
+<section class="table-card"><div class="table-title"><div><strong>Playlist Library</strong><small>Reorder, publish, edit or remove songs</small></div><span class="live-dot">LIVE</span></div><table><thead><tr><th>#</th><th>Song</th><th>Audio Path / URL</th><th>Status</th><th>Order</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table><div id="empty" class="empty hidden">Playlist empty है। Add Music से song जोड़ें।</div></section>
+<p class="note"><b>Online:</b> Playlist अब Appwrite Database + Storage से connected है.</p>
+</main></div>
+<div id="modal" class="modal hidden"><form id="songForm" class="card modal-card">
+<div class="modal-glow"></div><div class="modal-head"><div class="modal-title-wrap"><div class="music-orb">♫</div><div><small>KRISHNA MUSIC</small><h2 id="modalTitle">Add Music</h2><p>Upload audio, artwork and publish instantly.</p></div></div><button type="button" id="close" aria-label="Close">×</button></div>
+<input id="editId" type="hidden">
+<div class="form-grid"><div class="field full"><label>Song Name *</label><div class="input-shell"><span>♫</span><input id="songTitle" required placeholder="Chori Chori Dil Tera"></div></div>
+<div class="field full"><label>Singer / Artist</label><div class="input-shell"><span>♬</span><input id="artist" placeholder="Kumar Sanu"></div></div>
+<div class="field"><label>Audio File *</label><label class="upload-box" for="audioFile"><span class="upload-icon">♪</span><b>Choose audio</b><small id="audioName">MP3, WAV, M4A</small><input id="audioFile" type="file" accept="audio/*"></label></div>
+<div class="field"><label>Cover Image</label><label class="upload-box" for="coverFile"><span class="upload-icon">▣</span><b>Choose cover</b><small id="coverName">JPG, PNG, WEBP</small><input id="coverFile" type="file" accept="image/*"></label></div></div>
+<label class="check publish-switch"><input id="active" type="checkbox" checked><span class="switch-ui"></span><span><b>Publish on website</b><small>Make this song visible to listeners</small></span></label>
+<div class="actions"><button type="button" id="cancel" class="cancel-btn">Cancel</button><button id="saveBtn" class="primary save-btn"><span class="save-icon">✓</span><span class="save-text">Save Music</span><span class="save-loader"></span></button></div></form></div>
+<div id="toast" class="toast"></div><script src="admin.js"></script></body></html>
