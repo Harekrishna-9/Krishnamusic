@@ -38,3 +38,65 @@ button[type="submit"].save-btn:disabled {
 /* ===== KRISHNA MUSIC CONTROL CENTER UPGRADE ===== */
 select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#0c141d;color:#eef6ff;outline:none}.admin-view{display:none;animation:viewIn .38s ease}.admin-view.active{display:block}@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}#adminNav{overflow:auto;padding-right:2px}.nav-btn{width:100%}.premium-stats{grid-template-columns:repeat(4,1fr)}.dashboard-grid,.analytics-grid,.section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.panel{background:linear-gradient(155deg,rgba(17,27,38,.96),rgba(10,18,27,.96));border:1px solid rgba(101,132,160,.24);border-radius:18px;padding:18px;box-shadow:0 16px 40px rgba(0,0,0,.18);position:relative;overflow:hidden}.panel:before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,139,65,.05);right:-70px;top:-70px;filter:blur(6px)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.panel-head small{display:block;color:var(--accent);font-weight:800;letter-spacing:1.2px;font-size:9px}.panel-head h3{margin:4px 0 0;font-size:17px}.status-chip{font-size:9px;font-weight:900;letter-spacing:.8px;padding:6px 8px;border-radius:999px;border:1px solid rgba(91,169,255,.25);background:rgba(91,169,255,.08);color:#8cc5ff}.status-chip.green{border-color:rgba(73,220,145,.25);background:rgba(73,220,145,.08);color:#67eda8}.feature-content{display:flex;align-items:center;gap:18px}.feature-disc{width:86px;height:86px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;background:radial-gradient(circle at 35% 30%,#ff9a4f,#b53b2c 38%,#11273f 39%,#09111a 68%);box-shadow:0 0 0 7px rgba(255,142,67,.05),0 18px 35px rgba(0,0,0,.3);animation:discFloat 4s ease-in-out infinite}.feature-disc span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#16456e;font-weight:900;font-size:11px}@keyframes discFloat{50%{transform:translateY(-4px) rotate(4deg)}}.feature-copy{flex:1}.feature-copy p,.muted-copy{color:var(--muted);font-size:11px;line-height:1.6}.premium-btn,.ghost-btn{border:0;border-radius:11px;cursor:pointer;font-weight:800;transition:.25s}.premium-btn{margin-top:10px;padding:11px 14px;background:linear-gradient(135deg,#ff9b43,#ff6747);color:#fff;box-shadow:0 10px 22px rgba(255,105,65,.18)}.premium-btn:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 14px 28px rgba(255,105,65,.26)}.ghost-btn{padding:8px 10px;background:#111c27;color:#dbe8f5;border:1px solid var(--line)}.ghost-btn:hover{border-color:#45617b}.full-btn{width:100%}.meter-label{display:flex;justify-content:space-between;gap:10px;font-size:11px;margin-bottom:9px}.meter{height:9px;border-radius:999px;background:#0a121a;overflow:hidden;border:1px solid #1e2b38}.meter span{display:block;width:12%;height:100%;background:linear-gradient(90deg,#4ccf91,#ff9b43);border-radius:inherit;transition:.6s}.mini-list{display:grid;gap:8px}.mini-list .mini-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 11px;background:#0c151e;border:1px solid #1e2d3b;border-radius:12px}.mini-row strong{font-size:11px}.mini-row small{display:block;color:var(--muted);font-size:9px;margin-top:2px}.mini-row em{font-style:normal;color:#90a4b8;font-size:10px}.pulse-mini{color:#42df91!important;animation:pulseMini 1.4s infinite}@keyframes pulseMini{50%{opacity:.3;transform:scale(.75)}}.filters{display:flex;gap:8px}.filters select{min-width:125px}.table-scroll{overflow:auto}.table-scroll table{min-width:850px}table input[type=checkbox]{width:15px;height:15px;accent-color:#ff8b42}.song-cell{display:flex;align-items:center;gap:10px}.row-cover{width:35px;height:35px;border-radius:10px;background:#142333 center/cover;display:grid;place-items:center;color:#8ba0b5;font-size:9px;flex:0 0 auto}.preview-btn{width:32px;height:32px;border-radius:50%!important;padding:0!important;background:rgba(91,169,255,.08)!important;border-color:rgba(91,169,255,.25)!important;color:#89c5ff!important}.preview-btn.playing{background:rgba(255,154,61,.15)!important;border-color:rgba(255,154,61,.45)!important;color:#ffab62!important}.playlist-cards{display:grid;gap:10px}.playlist-card{padding:14px;border:1px solid #263746;border-radius:14px;background:#0c151e;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:.22s}.playlist-card:hover{transform:translateX(3px);border-color:#3c5369}.playlist-card strong{font-size:12px}.playlist-card small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.playlist-card button{background:transparent;border:0;color:#ff8e75;cursor:pointer}.check-list{display:grid;gap:7px;max-height:370px;overflow:auto;margin-top:12px;padding-right:4px}.check-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid #20303f;border-radius:11px;background:#0b141d}.check-item input{width:15px}.check-item span{font-size:11px}.listener-list{display:grid;gap:8px}.listener-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 12px;border:1px solid #223242;border-radius:12px;background:#0b141d}.listener-left{display:flex;align-items:center;gap:10px}.listener-avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(73,220,145,.08);border:1px solid rgba(73,220,145,.2);color:#54e79c}.listener-row small{color:var(--muted);font-size:9px}.empty-state{padding:18px;text-align:center;color:var(--muted)}.bar-list{display:grid;gap:12px}.bar-row .bar-copy{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px;font-size:10px}.bar-track{height:8px;border-radius:999px;background:#09121a;overflow:hidden}.bar-track span{height:100%;display:block;border-radius:inherit;background:linear-gradient(90deg,#5ba9ff,#ff8b43);transition:.5s}.metric-stack{display:grid;gap:10px}.metric-stack>div{padding:14px;border:1px solid #223241;background:#0b141d;border-radius:13px}.metric-stack span{color:var(--muted);font-size:10px}.metric-stack b{display:block;margin-top:5px;font-size:18px}.editable-list{display:grid;gap:8px}.edit-vibe{display:flex;gap:8px}.edit-vibe input{flex:1}.edit-vibe button{width:38px;border:1px solid #3b2730;background:#1a1117;color:#ff8787;border-radius:10px;cursor:pointer}.quote-preview{min-height:190px;border:1px solid #25394c;border-radius:16px;background:radial-gradient(circle at 50% 100%,rgba(255,100,60,.2),transparent 45%),linear-gradient(#0f355c,#0e1a2c);display:grid;place-items:center;align-content:center;text-align:center;padding:20px}.quote-preview span{font-size:9px;letter-spacing:2px;color:#90a9c0}.quote-preview strong{font-size:18px;margin:18px 0 8px}.quote-preview small{color:#8da0b2;font-size:9px}.switch-row{display:flex!important;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid rgba(94,122,148,.14)}.switch-row>span:first-child{flex:1}.switch-row b{display:block;font-size:11px;color:#fff}.switch-row small{display:block;font-size:9px;color:var(--muted);margin-top:3px}.switch-row input{display:none}.switch-row input:checked+.switch-ui{background:linear-gradient(135deg,#42db8e,#2bbf78)}.switch-row input:checked+.switch-ui:after{transform:translateX(16px)}input[type=range]{accent-color:#ff8b43}.settings-form label{margin-top:13px}.restore-box{display:grid!important;place-items:center;margin-top:10px;padding:12px;border:1px dashed #39516a;border-radius:12px;cursor:pointer}.restore-box input{display:none}.activity-log{display:grid;gap:7px;max-height:360px;overflow:auto}.activity-item{padding:10px 11px;border-left:2px solid #ff8e49;background:#0b141d;border-radius:0 10px 10px 0}.activity-item b{font-size:10px}.activity-item small{display:block;color:var(--muted);font-size:8px;margin-top:3px}.media-preview{margin:0 25px 16px;padding:12px;border:1px solid #293b4d;border-radius:14px;background:#0c151e;display:flex;align-items:center;gap:11px}.preview-cover{width:44px;height:44px;border-radius:12px;background:#17304a center/cover;display:grid;place-items:center;font-size:10px;font-weight:900}.media-preview>div:nth-child(2){display:flex;flex-direction:column;flex:1}.media-preview small{font-size:8px;color:var(--accent);letter-spacing:1px}.media-preview strong{font-size:11px;margin:2px 0}.media-preview span{font-size:9px;color:var(--muted)}.media-preview button{border:1px solid #30465b;background:#122130;color:#fff;border-radius:10px;padding:8px 10px;cursor:pointer}.save-btn:disabled{background:linear-gradient(135deg,#ff8a3d,#ff5f3d)!important;color:#fff!important;opacity:.72!important}.note{margin-top:16px}
 @media(max-width:1050px){.premium-stats{grid-template-columns:repeat(2,1fr)}.dashboard-grid,.analytics-grid,.section-grid{grid-template-columns:1fr}.toolbar{align-items:stretch}.filters{width:100%}.tool-actions{flex-wrap:wrap}}@media(max-width:750px){.premium-stats{grid-template-columns:1fr}.feature-content{align-items:flex-start}.feature-disc{width:68px;height:68px}.media-preview{margin:0 18px 14px}.filters{flex-direction:column}.hero-head .add-btn{position:sticky;top:8px;z-index:5}}
+/* =========================================
+   KRISHNA MUSIC CONTROL CENTER
+   PREMIUM SECTION SPACING FIX
+========================================= */
+
+/* Top stats cards ke niche extra breathing space */
+.dashboard-stats,
+.live-stats,
+.stats-grid,
+.control-stats {
+  margin-bottom: 22px !important;
+}
+
+/* Dashboard ke major cards ke beech gap */
+.dashboard-grid,
+.control-center-grid {
+  gap: 24px !important;
+  row-gap: 24px !important;
+}
+
+/* Live Listeners page */
+.live-listeners-page .stats-grid,
+#liveListenersSection .stats-grid,
+#liveListenersPage .stats-grid {
+  margin-bottom: 24px !important;
+}
+
+/* Active Listener Sessions card ko stats se door rakho */
+.active-listeners-card,
+.listener-sessions-card,
+#activeListenerSessions {
+  margin-top: 8px !important;
+}
+
+/* Dashboard first content row */
+.dashboard-content,
+.dashboard-main-grid,
+#dashboardSection .dashboard-grid {
+  margin-top: 6px !important;
+}
+
+/* All premium panels vertical spacing */
+.admin-panel-card,
+.control-card,
+.dashboard-card {
+  margin-bottom: 18px;
+}
+
+/* Mobile me bhi gap maintained rahe */
+@media (max-width: 768px) {
+  .dashboard-stats,
+  .live-stats,
+  .stats-grid,
+  .control-stats {
+    margin-bottom: 18px !important;
+  }
+
+  .dashboard-grid,
+  .control-center-grid {
+    gap: 18px !important;
+  }
+}
