@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#061b3c">
+  <title>Krishna Music — Highway Vibes</title>
+  <meta name="description" content="Krishna Music — cinematic Indian highway music experience.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="sky-glow"></div>
+    <div class="stars"></div>
+    <div class="horizon"></div>
+    <div class="road"></div>
+    <div class="fog fog-a"></div>
+    <div class="fog fog-b"></div>
+
+    <div class="truck-wrap">
+      <div class="truck">
+        <div class="cargo">
+          <div class="cargo-top"></div>
+          <div class="cargo-lines"></div>
+        </div>
+        <div class="cab">
+          <div class="windshield"></div>
+          <div class="door"></div>
+          <div class="bumper"></div>
+          <div class="headlight"></div>
+        </div>
+        <div class="wheel w1"></div>
+        <div class="wheel w2"></div>
+      </div>
+    </div>
+
+    <div class="light-streak s1"></div>
+    <div class="light-streak s2"></div>
+  </div>
+
+  <header class="topbar">
+    <div id="clock" class="clock">--:--</div>
+
+    <a class="brand-dot" href="#" aria-label="Krishna Music home">
+      <span class="pulse-dot"></span>
+      <strong>Krishna Music</strong>
+     <span class="muted highway-status">
+  <span class="highway-line"></span>
+  ON THE HIGHWAY
+</span>
+    </a>
+
+   <div class="top-media-pill">
+
+  <div class="top-live-listeners">
+    <span class="live-user-dot"></span>
+    <span id="liveListenerCount">1</span>
+    <span>LIVE</span>
+  </div>
+
+  <span class="top-pill-divider"></span>
+
+  <button class="top-playlist-btn" id="topPlaylistBtn" type="button">
+    <span class="playlist-icon">☷</span>
+    <span>Playlist</span>
+  </button>
+
+  <span class="top-pill-divider"></span>
+
+  <button class="sound-toggle" id="soundToggle" aria-label="Mute or unmute">
+    <span id="soundIcon">♫</span>
+  </button>
+
+</div>
+  </header>
+
+  <main class="hero">
+    <section class="title-zone">
+      <p class="eyebrow">HIGHWAY • MUSIC • VIBES</p>
+      <h1>कृष्णा म्यूज़िक</h1>
+      <p class="tagline">सफ़र लंबा हो, संगीत साथ हो।</p>
+    </section>
+
+    <section class="quote-wrap" aria-live="polite">
+      <p id="quote">रास्ते बदलते हैं, यादें नहीं।</p>
+    </section>
+
+    <section class="player glass">
+      <div class="cover" aria-hidden="true">
+        <div class="cover-ring"></div>
+        <span>KM</span>
+      </div>
+
+      <div class="track-info">
+        <div class="track-row">
+          <div>
+            <h2 id="trackTitle">Krishna Highway Mix</h2>
+            <p id="trackArtist">Krishna Music</p>
+          </div>
+          <span class="track-badge">NOW PLAYING</span>
+        </div>
+
+        <div class="progress-wrap">
+          <span id="currentTime">0:00</span>
+          <input id="progress" type="range" min="0" max="100" value="0" aria-label="Song progress">
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="ctrl" id="shuffleBtn" aria-label="Shuffle">⤨</button>
+        <button class="ctrl" id="prevBtn" aria-label="Previous">⏮</button>
+        <button class="play" id="playBtn" aria-label="Play or pause">▶</button>
+        <button class="ctrl" id="nextBtn" aria-label="Next">⏭</button>
+        <button class="ctrl" id="playlistBtn" aria-label="Playlist">☷</button>
+      </div>
+    </section>
+  </main>
+
+  <aside class="horn-pill" aria-label="Horn decoration">
+    <button id="hornBtn" type="button">
+      <span class="horn-icon">🔊</span>
+      <span><strong>हॉर्न ओके प्लीज़</strong><small>Horn OK Please</small></span>
+    </button>
+  </aside>
+
+  <div class="playlist-panel glass" id="playlistPanel" aria-hidden="true">
+    <div class="playlist-head">
+      <div>
+        <small>KRISHNA MUSIC</small>
+        <h3>Playlist</h3>
+      </div>
+      <button id="closePlaylist" aria-label="Close playlist">✕</button>
+    </div>
+    <div id="playlistList"></div>
+    <div class="playlist-note-slider">
+  <div class="playlist-note-track">
+    🛣️ रास्ते बदलते रहें, संगीत चलता रहे। &nbsp;&nbsp; • &nbsp;&nbsp;
+    🛣️ रास्ते बदलते रहें, संगीत चलता रहे।
+  </div>
+</div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
