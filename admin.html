@@ -56,4 +56,88 @@
 <div id="mediaPreview" class="media-preview hidden"><div class="preview-cover" id="previewCover">KM</div><div><small>PREVIEW</small><strong id="previewTitle">Track preview</strong><span id="previewArtist">Krishna Music</span></div><button type="button" id="previewAudioBtn">▶ Preview</button></div>
 <label class="check publish-switch"><input id="active" type="checkbox" checked><span class="switch-ui"></span><span><b>Publish on website</b><small>Make this song visible to listeners</small></span></label>
 <div class="actions"><button type="button" id="cancel" class="cancel-btn">Cancel</button><button id="saveBtn" class="primary save-btn"><span class="save-icon">✓</span><span class="save-text">Save Music</span><span class="save-loader"></span></button></div></form></div>
-<audio id="adminPreviewAudio"></audio><div id="toast" class="toast"></div><script src="admin.js"></script></body></html>
+<audio id="adminPreviewAudio"></audio><div id="toast" class="toast"></div>
+<!-- ===== NEW PLAYLIST PREMIUM POPUP ===== -->
+<div id="playlistModal" class="playlist-modal hidden">
+
+  <div class="playlist-modal-card">
+
+    <div class="playlist-modal-glow"></div>
+
+    <div class="playlist-modal-head">
+
+      <div class="playlist-modal-icon">
+        📁
+      </div>
+
+      <div>
+        <small>KRISHNA MUSIC</small>
+        <h2>Create Playlist</h2>
+        <p>Create a new music folder for your listeners.</p>
+      </div>
+
+      <button
+        id="closePlaylistModal"
+        type="button"
+        class="playlist-modal-close"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="playlist-modal-body">
+
+      <label for="newPlaylistName">
+        Playlist Name
+      </label>
+
+      <div class="playlist-name-input">
+
+        <span>♫</span>
+
+        <input
+          id="newPlaylistName"
+          type="text"
+          placeholder="Example: 90s Highway Hits"
+          maxlength="50"
+          autocomplete="off"
+        >
+
+      </div>
+
+      <small class="playlist-modal-hint">
+        This name will appear as a Music Folder on Krishna Music.
+      </small>
+
+    </div>
+
+
+    <div class="playlist-modal-actions">
+
+      <button
+        id="cancelPlaylistModal"
+        type="button"
+        class="playlist-cancel-btn"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="createPlaylistBtn"
+        type="button"
+        class="playlist-create-btn"
+      >
+        <span>＋</span>
+        Create Playlist
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+<script src="admin.js"></script>
+</body>
+</html>
