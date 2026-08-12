@@ -709,3 +709,260 @@ select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:1
   }
 
 }
+/* =========================================================
+   KRISHNA MUSIC — PREMIUM MUSIC FOLDER SELECTOR
+========================================================= */
+
+#songFolderPicker,
+.folder-picker,
+.music-folder-picker{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px !important;
+  max-height:210px;
+  overflow-y:auto;
+  padding:6px 4px 6px 0;
+}
+
+/* existing checkbox row -> folder card */
+#songFolderPicker .check-item,
+.folder-picker .check-item,
+.music-folder-picker .check-item{
+  position:relative;
+  min-height:72px;
+
+  margin:0 !important;
+  padding:11px 12px 11px 54px !important;
+
+  border:1px solid #27394b !important;
+  border-radius:14px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17,30,42,.96),
+      rgba(10,20,30,.98)
+    ) !important;
+
+  display:flex !important;
+  align-items:center !important;
+
+  cursor:pointer;
+  overflow:hidden;
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+
+
+/* folder icon */
+#songFolderPicker .check-item::before,
+.folder-picker .check-item::before,
+.music-folder-picker .check-item::before{
+  content:"📁";
+
+  position:absolute;
+
+  left:13px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:31px;
+  height:31px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:10px;
+
+  font-size:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,172,68,.16),
+      rgba(255,110,61,.08)
+    );
+
+  border:
+    1px solid rgba(255,164,64,.18);
+
+  box-shadow:
+    0 7px 18px rgba(0,0,0,.18);
+}
+
+
+/* subtle glow */
+#songFolderPicker .check-item::after,
+.folder-picker .check-item::after,
+.music-folder-picker .check-item::after{
+  content:"";
+
+  position:absolute;
+
+  width:90px;
+  height:90px;
+
+  right:-55px;
+  top:-55px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,135,59,.11),
+      transparent 70%
+    );
+
+  pointer-events:none;
+}
+
+
+/* checkbox */
+#songFolderPicker .check-item input,
+.folder-picker .check-item input,
+.music-folder-picker .check-item input{
+  position:absolute;
+
+  right:10px;
+  top:10px;
+
+  width:16px !important;
+  height:16px !important;
+
+  accent-color:#ff8a42;
+
+  cursor:pointer;
+}
+
+
+/* folder name */
+#songFolderPicker .check-item span,
+.folder-picker .check-item span,
+.music-folder-picker .check-item span{
+  display:block;
+
+  max-width:145px;
+
+  color:#f7fbff !important;
+
+  font-size:10px !important;
+  font-weight:800;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+
+/* small published text */
+#songFolderPicker .check-item small,
+.folder-picker .check-item small,
+.music-folder-picker .check-item small{
+  display:block;
+
+  margin-top:4px;
+
+  color:#788b9d !important;
+
+  font-size:8px !important;
+  font-weight:500;
+}
+
+
+/* hover */
+#songFolderPicker .check-item:hover,
+.folder-picker .check-item:hover,
+.music-folder-picker .check-item:hover{
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(255,145,70,.48) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(26,40,53,.98),
+      rgba(12,23,34,.98)
+    ) !important;
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.2);
+}
+
+
+/* SELECTED FOLDER CARD */
+#songFolderPicker .check-item:has(input:checked),
+.folder-picker .check-item:has(input:checked),
+.music-folder-picker .check-item:has(input:checked){
+  border-color:
+    rgba(73,220,145,.48) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17,48,43,.96),
+      rgba(10,28,31,.98)
+    ) !important;
+
+  box-shadow:
+    0 0 0 3px rgba(73,220,145,.04),
+    0 12px 30px rgba(0,0,0,.18);
+}
+
+
+#songFolderPicker .check-item:has(input:checked)::before,
+.folder-picker .check-item:has(input:checked)::before,
+.music-folder-picker .check-item:has(input:checked)::before{
+  content:"📂";
+
+  background:
+    rgba(73,220,145,.12);
+
+  border-color:
+    rgba(73,220,145,.26);
+}
+
+
+/* scrollbar */
+#songFolderPicker::-webkit-scrollbar,
+.folder-picker::-webkit-scrollbar,
+.music-folder-picker::-webkit-scrollbar{
+  width:5px;
+}
+
+
+#songFolderPicker::-webkit-scrollbar-thumb,
+.folder-picker::-webkit-scrollbar-thumb,
+.music-folder-picker::-webkit-scrollbar-thumb{
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.18);
+}
+
+
+#songFolderPicker::-webkit-scrollbar-thumb:hover,
+.folder-picker::-webkit-scrollbar-thumb:hover,
+.music-folder-picker::-webkit-scrollbar-thumb:hover{
+  background:
+    rgba(255,142,67,.55);
+}
+
+
+/* mobile */
+@media(max-width:600px){
+
+  #songFolderPicker,
+  .folder-picker,
+  .music-folder-picker{
+    grid-template-columns:1fr;
+  }
+
+}
