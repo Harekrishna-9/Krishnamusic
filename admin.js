@@ -69,7 +69,190 @@ async function loadStorageUsage(){try{const d=await req(`/storage/buckets/${APPW
 /* ---------- Playlists ---------- */
 function renderPlaylists(){const c=getCfg(),pls=Array.isArray(c.playlists)&&c.playlists.length?c.playlists:defaults.playlists;$("playlistCards").innerHTML=pls.map(p=>{const published=p.published===true;return `<div class="playlist-card"><div><strong>${esc(p.name)}</strong><small>${(p.songIds||[]).length} songs • ${published?"Published folder":"Not published"}</small></div><div class="playlist-card-actions"><button class="playlist-publish-btn ${published?"is-published":""}" data-publish-playlist="${p.id}">${published?"✓ Published":"Publish"}</button>${p.id!=="highway"?`<button class="playlist-delete-btn" data-del-playlist="${p.id}">Delete</button>`:"<span class=\"status-chip\">DEFAULT</span>"}</div></div>`}).join("");$("playlistPicker").innerHTML=pls.map(p=>`<option value="${p.id}">${esc(p.name)}${p.published===true?" • Published":""}</option>`).join("");renderPlaylistSongPicker();document.querySelectorAll("[data-del-playlist]").forEach(b=>b.onclick=()=>deletePlaylist(b.dataset.delPlaylist));document.querySelectorAll("[data-publish-playlist]").forEach(b=>b.onclick=()=>togglePlaylistPublish(b.dataset.publishPlaylist))}
 function renderPlaylistSongPicker(){const c=getCfg(),p=(c.playlists||[]).find(x=>x.id===$("playlistPicker").value)||(c.playlists||[])[0];if(!p){$("playlistSongPicker").innerHTML="";return}$("playlistSongPicker").innerHTML=songs.map(s=>`<label class="check-item"><input type="checkbox" data-play-song="${s.id}" ${(p.songIds||[]).includes(s.id)?"checked":""}><span>${esc(s.title)} <small>• ${esc(s.artist)}</small></span></label>`).join("")}
-$("playlistPicker").onchange=renderPlaylistSongPicker;$("newPlaylist").onclick=()=>{const name=prompt("New playlist name");if(!name?.trim())return;const c=getCfg(),id="pl_"+Date.now().toString(36);c.playlists=[...(c.playlists||[]),{id,name:name.trim(),songIds:[],published:false}];saveCfg(c);logActivity(`Created playlist: ${name.trim()}`);renderPlaylists()};
+$("playlistPicker").onchange =
+  renderPlaylistSongPicker;
+
+
+/* ======================================
+   PREMIUM CREATE PLAYLIST MODAL
+====================================== */
+
+const playlistModal =
+  $("playlistModal");
+
+const newPlaylistName =
+  $("newPlaylistName");
+
+
+function openPlaylistModal(){
+
+  playlistModal.classList.remove("hidden");
+
+  document.body.style.overflow =
+    "hidden";
+
+  newPlaylistName.value = "";
+
+  setTimeout(()=>{
+    newPlaylistName.focus();
+  },180);
+
+}
+
+
+function closePlaylistModal(){
+
+  playlistModal.classList.add("hidden");
+
+  document.body.style.overflow = "";
+
+  newPlaylistName.value = "";
+
+}
+
+
+/* NEW PLAYLIST BUTTON */
+
+$("newPlaylist").onclick =
+  openPlaylistModal;
+
+
+/* CLOSE */
+
+$("closePlaylistModal").onclick =
+  closePlaylistModal;
+
+
+$("cancelPlaylistModal").onclick =
+  closePlaylistModal;
+
+
+/* BACKDROP CLICK */
+
+playlistModal.addEventListener(
+  "click",
+  e=>{
+
+    if(e.target === playlistModal){
+
+      closePlaylistModal();
+
+    }
+
+  }
+);
+
+
+/* CREATE PLAYLIST */
+
+function createNewPlaylist(){
+
+  const name =
+    newPlaylistName.value.trim();
+
+
+  if(!name){
+
+    newPlaylistName.focus();
+
+    newPlaylistName.style.borderColor =
+      "#ff6e4a";
+
+    setTimeout(()=>{
+
+      newPlaylistName.style.borderColor =
+        "";
+
+    },900);
+
+    toast("Playlist name enter करें");
+
+    return;
+
+  }
+
+
+  const c =
+    getCfg();
+
+
+  const id =
+    "pl_" +
+    Date.now().toString(36);
+
+
+  c.playlists = [
+    ...(c.playlists || []),
+
+    {
+      id,
+      name,
+      songIds:[],
+      published:false
+    }
+
+  ];
+
+
+  saveCfg(c);
+
+  logActivity(
+    `Created playlist: ${name}`
+  );
+
+
+  renderPlaylists();
+
+  closePlaylistModal();
+
+  toast(
+    `Playlist "${name}" created`
+  );
+
+}
+
+
+/* CREATE BUTTON */
+
+$("createPlaylistBtn").onclick =
+  createNewPlaylist;
+
+
+/* ENTER = CREATE */
+
+newPlaylistName.addEventListener(
+  "keydown",
+  e=>{
+
+    if(e.key === "Enter"){
+
+      e.preventDefault();
+
+      createNewPlaylist();
+
+    }
+
+  }
+);
+
+
+/* ESC = CLOSE */
+
+document.addEventListener(
+  "keydown",
+  e=>{
+
+    if(
+      e.key === "Escape" &&
+      !playlistModal.classList.contains("hidden")
+    ){
+
+      closePlaylistModal();
+
+    }
+
+  }
+);
 function togglePlaylistPublish(id){const c=getCfg(),p=(c.playlists||[]).find(x=>x.id===id);if(!p)return;const next=!(p.published===true);c.playlists=(c.playlists||[]).map(x=>x.id===id?{...x,published:next}:x);saveCfg(c);logActivity(`${next?"Published":"Unpublished"} playlist folder: ${p.name}`);renderPlaylists();toast(next?"Playlist folder published on website":"Playlist folder hidden from website")}
 function deletePlaylist(id){const c=getCfg(),p=(c.playlists||[]).find(x=>x.id===id);if(!p||!confirm(`Delete playlist "${p.name}"?`))return;c.playlists=(c.playlists||[]).filter(x=>x.id!==id);saveCfg(c);logActivity(`Deleted playlist: ${p.name}`);renderPlaylists()}
 $("savePlaylistMap").onclick=()=>{const c=getCfg(),id=$("playlistPicker").value,ids=[...document.querySelectorAll("[data-play-song]:checked")].map(x=>x.dataset.playSong);c.playlists=(c.playlists||[]).map(p=>p.id===id?{...p,songIds:ids}:p);saveCfg(c);logActivity("Playlist songs updated");renderPlaylists();toast("Playlist saved")};
